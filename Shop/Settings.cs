@@ -1,5 +1,16 @@
 namespace Shop
 {
+    /** Instale os pacotes:
+     *
+     *  1. Microsoft.AspNetCoreAuthentication: 
+     *  Possui tudo o que é preciso para trabalhar com autenticação e autorização dentro do ASP.NET. 
+     *  Comando dotnet add package Microsoft.AspNetCoreAuthentication
+     *  
+     *  2. Microsoft.AspNetCore.Authentication.JwtBearer
+     *  Possui o mesmo que o pacote anterior, este tem o formato do TokenJWT que a gente trabalha
+     *  Comando dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
+     */
+
     public static class Settings
     {
         // Para o token precisamos de uma chave com um hash (é a nossa chave privada que apenas o servidor tem)
