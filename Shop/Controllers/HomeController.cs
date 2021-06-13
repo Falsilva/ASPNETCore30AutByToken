@@ -43,5 +43,48 @@ namespace Shop.Controllers
                 token = token
             };
         }
+
+        /**
+         * Método Anonymous
+         * Qualquer usuário pode acessar por esta rota
+         * Mostra "Anônimo" na tela (response) 
+         */
+        [HttpGet]
+        [Route("anonymous")]
+        [AllowAnonymous]
+        public string Anonymous() => "Anônimo";
+
+        /**
+         * Método Authenticated
+         * Anotação Authorize, restringe o acesso para a rota apenas por usuários autenticados
+         * Mostra "Autenticado" na tela (response) com o nome do usuário obtido do token com User.Identity.Name,
+         * por ter sido criado o Claim, com o ClaimTypes.Name, associado ao User.UserName, lá no TokenService
+         */
+        [HttpGet]
+        [Route("authenticated")]
+        [Authorize]
+        public string Authenticated() => string.Format("Autenticado - {0}", User.Identity.Name);
+
+        /**
+         * Método Employee
+         * Anotação Authorize, restringe o acesso para a rota apenas por usuários autenticados 
+         * e com os perfis employee ou manager
+         * Mostra "Autenticado" na tela (response) 
+         */
+        [HttpGet]
+        [Route("employee")]
+        [Authorize(Roles = "employee, manager")]
+        public string Employee() => "Funcionário";
+
+        /**
+         * Método Manager
+         * Anotação Authorize, restringe o acesso para a rota apenas por usuários autenticados 
+         * e com o perfil manager
+         * Mostra "Autenticado" na tela (response) 
+         */
+        [HttpGet]
+        [Route("manager")]
+        [Authorize(Roles = "manager")]
+        public string Manager() => "Gerente";
     }
 }
