@@ -10,6 +10,7 @@ using Microsoft.OpenApi.Models;
 
 namespace Shop
 {
+    // Rodamos a nossa aplicação com o comando dotnet watch run, e então o localhost:5001 estará disponível
     public class Startup
     {
         public Startup(IConfiguration configuration)
